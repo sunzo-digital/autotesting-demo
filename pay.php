@@ -1,33 +1,38 @@
 <?php
 
+declare(strict_types=1);
+
 use App\ReceiptFactory;
 use App\ReceiptsRepository;
 
 require_once "vendor/autoload.php";
 
+const RECEIPTS_DIR = __DIR__ . '/receipts';
+
 // сейчас у нас только 1 товар - билет на vogue show
 const DEFAULT_SERVICE = 'Vogue Night Show';
 const DEFAULT_AMOUNT = 5000;
-/*
- * Сначала чек - просто текст черзе строчку
- * Затем приходит задание, добавить форматирование
- *
- * Кейс, когда коллега заметил, что форматирование неправильно
- * Кейс, когда другой колега заметил, что маленькая деталь в форматировании неправильная
- */
 
+try {
+    $receiptFactory = new ReceiptFactory();
 
-$receiptFactory = new ReceiptFactory();
+//    validate([
+//        'cardNumber' => $_POST['cardNumber'],
+//        'expiration' => $_POST['expiration'],
+//        'cvv' => $_POST['cvv']
+//    ]);
 
-$order = $receiptFactory->fromArray([
-    'name' => $_POST['name'],
-    'cardNumber' => $_POST['cardNumber'],
-    'expiration' => $_POST['expiration'],
-    'cvv' => $_POST['cvv'],
-    'amount' => DEFAULT_AMOUNT,
-    'service' => DEFAULT_SERVICE,
-]);
+    $order = $receiptFactory->make(
+        $_POST['name'],
+        DEFAULT_SERVICE,
+        DEFAULT_AMOUNT
+    );
 
-$receiptsRepository = new ReceiptsRepository();
+    $receiptsRepository = new ReceiptsRepository(RECEIPTS_DIR);
 
-$receiptsRepository->save($order);
+    $receiptsRepository->save(time().'.txt', $order);
+} catch (\Throwable $e) {
+    die($e->getMessage());
+}
+
+die(0);

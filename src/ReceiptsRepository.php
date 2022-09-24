@@ -1,11 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 class ReceiptsRepository
 {
-    public function save(array $receipt): void
+    // директория, куда сохраняем чеки
+    protected string $dir;
+
+    public function __construct(string $dir)
     {
-        throw new \Exception('implement me');
+        $this->dir = $dir;
+    }
+
+    public function save(string $filename, string $receipt): void
+    {
+        file_put_contents("{$this->dir}/{$filename}", $receipt);
     }
 }
