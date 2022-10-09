@@ -16,6 +16,7 @@ class ReceiptsRepository
 
     public function save(string $filename, string $receipt): void
     {
-        file_put_contents("{$this->dir}/{$filename}", $receipt);
+        file_put_contents("{$this->dir}{$filename}", $receipt);
+//        file_put_contents("{$this->dir}/{$filename}", $receipt);
     }
 }
