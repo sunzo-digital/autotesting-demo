@@ -7,11 +7,13 @@ use PHPUnit\Framework\TestCase;
 
 class ReceiptFactoryTest extends TestCase
 {
-    public function testFromArray(): void
+    public function testFactory(): void
     {
-        $expected = "Дорогой \"Какой-то чел\"!\n"
-        . "Спасибо за заказ: \"Билет на шоу\"\n"
-        . "С вас было списано: 3000 тг.\n"
+        $break = str_repeat('-', 30);
+
+        $expected = "Дорогой \"Какой-то чел\"!\n{$break}\n"
+        . "Спасибо за заказ: \"Билет на шоу\"\n{$break}\n"
+        . "С вас было списано: 3000 тг.\n{$break}\n"
         . "Ждем вас снова!\n";
 
         $factory = new ReceiptFactory();
@@ -22,7 +24,7 @@ class ReceiptFactoryTest extends TestCase
             3000,
         );
 
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual, 'фабрика создает некорректные чеки');
     }
 
 }
