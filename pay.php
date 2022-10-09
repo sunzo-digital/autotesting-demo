@@ -14,13 +14,9 @@ const DEFAULT_SERVICE = 'Vogue Night Show';
 const DEFAULT_AMOUNT = 5000;
 
 try {
-    $receiptFactory = new ReceiptFactory();
+    // pay();
 
-//    validate([
-//        'cardNumber' => $_POST['cardNumber'],
-//        'expiration' => $_POST['expiration'],
-//        'cvv' => $_POST['cvv']
-//    ]);
+    $receiptFactory = new ReceiptFactory();
 
     $order = $receiptFactory->make(
         $_POST['name'],
@@ -35,4 +31,4 @@ try {
     die($e->getMessage());
 }
 
-die(0);
+die('successful payment');
