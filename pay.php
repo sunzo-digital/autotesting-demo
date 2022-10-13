@@ -14,11 +14,12 @@ const DEFAULT_SERVICE = 'Vogue Night Show';
 const DEFAULT_AMOUNT = 5000;
 
 try {
+    // списываем деньги у клиента, помечаем что услуга оплачена и т.д.
     // pay();
 
     $receiptFactory = new ReceiptFactory();
 
-    $order = $receiptFactory->make(
+    $receipt = $receiptFactory->make(
         $_POST['name'],
         DEFAULT_SERVICE,
         DEFAULT_AMOUNT
@@ -26,7 +27,7 @@ try {
 
     $receiptsRepository = new ReceiptsRepository(RECEIPTS_DIR);
 
-    $receiptsRepository->save(time().'.txt', $order);
+    $receiptsRepository->save(time().'.txt', $receipt);
 } catch (\Throwable $e) {
     die($e->getMessage());
 }
