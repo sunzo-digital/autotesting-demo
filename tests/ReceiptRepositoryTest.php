@@ -10,6 +10,9 @@ class ReceiptRepositoryTest extends TestCase
     protected string $tmpDir;
     protected string $filename;
 
+    /**
+     * Метод выполняется перед каждым тестом
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -19,6 +22,9 @@ class ReceiptRepositoryTest extends TestCase
         $this->filename = uniqid() . '.txt';
     }
 
+    /**
+     * Метод выполняется после каждого теста
+     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -27,7 +33,7 @@ class ReceiptRepositoryTest extends TestCase
         $this->assertTrue(rmdir($this->tmpDir));
     }
 
-    public function testSave(): void
+    public function testReceiptWasSaved(): void
     {
         $expected = "Дорогой \"Какой-то чел\"!\n"
             . "Спасибо за заказ: \"Билет на шоу\"\n"
@@ -42,5 +48,4 @@ class ReceiptRepositoryTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
-
 }
