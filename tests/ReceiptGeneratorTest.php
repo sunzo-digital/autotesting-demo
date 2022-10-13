@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use App\ReceiptFactory;
+use App\ReceiptGenerator;
 use PHPUnit\Framework\TestCase;
 
-class ReceiptFactoryTest extends TestCase
+class ReceiptGeneratorTest extends TestCase
 {
-    public function testFactory(): void
+    public function testMakingReceipt(): void
     {
         $break = str_repeat('-', 30);
 
@@ -16,7 +16,7 @@ class ReceiptFactoryTest extends TestCase
         . "С вас было списано: 3000 тг.\n{$break}\n"
         . "Ждем вас снова!\n";
 
-        $factory = new ReceiptFactory();
+        $factory = new ReceiptGenerator();
 
         $actual = $factory->make(
             'Какой-то чел',
@@ -26,5 +26,4 @@ class ReceiptFactoryTest extends TestCase
 
         $this->assertEquals($expected, $actual, 'фабрика создает некорректные чеки');
     }
-
 }
