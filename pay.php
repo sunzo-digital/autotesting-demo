@@ -31,4 +31,5 @@ try {
     die($e->getMessage());
 }
 
+header('Location: http://localhost:8080');
 die('successful payment');
