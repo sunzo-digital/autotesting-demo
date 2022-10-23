@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-use App\ReceiptGenerator;
+use App\ReceiptFactory;
 use PHPUnit\Framework\TestCase;
 
-class ReceiptGeneratorTest extends TestCase
+class ReceiptFactoryTest extends TestCase
 {
-    public function testMakingReceipt(): void
+    public function testFactory(): void
     {
         $expected = "Дорогой \"Какой-то чел\"!\n"
         . "Спасибо за заказ: \"Билет на шоу\"\n"
         . "С вас было списано: 3000 тг.\n"
         . "Ждем вас снова!\n";
 
-        $factory = new ReceiptGenerator();
+        $factory = new ReceiptFactory();
 
         $actual = $factory->make(
             'Какой-то чел',
@@ -24,4 +24,5 @@ class ReceiptGeneratorTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
 }

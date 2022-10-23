@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-class ReceiptGenerator
+class ReceiptFactory
 {
     public function make(string $userName, string $service, int $amount): string
     {
@@ -20,4 +20,5 @@ class ReceiptGenerator
 
         return sprintf($format, $userName, $service, $amount);
     }
+
 }

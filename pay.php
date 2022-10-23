@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\ReceiptGenerator;
+use App\ReceiptFactory;
 use App\ReceiptsRepository;
 
 require_once "vendor/autoload.php";
@@ -14,12 +14,12 @@ const DEFAULT_SERVICE = 'Vogue Night Show';
 const DEFAULT_AMOUNT = 5000;
 
 try {
-    // производим оплату: списываем деньги, помечаем что услуга оплачена и т.д.
+    // списываем деньги у клиента, помечаем что услуга оплачена и т.д.
     // pay();
 
-    $receiptGenerator = new ReceiptGenerator();
+    $receiptFactory = new ReceiptFactory();
 
-    $receipt = $receiptGenerator->make(
+    $receipt = $receiptFactory->make(
         $_POST['name'],
         DEFAULT_SERVICE,
         DEFAULT_AMOUNT
