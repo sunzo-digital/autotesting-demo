@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\ReceiptFactory;
+use App\ReceiptGenerator;
 use App\ReceiptsRepository;
 
 require_once "vendor/autoload.php";
@@ -16,7 +16,7 @@ const DEFAULT_AMOUNT = 5000;
 try {
     // pay();
 
-    $receiptFactory = new ReceiptFactory();
+    $receiptFactory = new ReceiptGenerator();
 
     $order = $receiptFactory->make(
         $_POST['name'],

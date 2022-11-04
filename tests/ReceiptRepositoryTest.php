@@ -27,7 +27,7 @@ class ReceiptRepositoryTest extends TestCase
         $this->assertTrue(rmdir($this->tmpDir));
     }
 
-    public function testSave(): void
+    public function testReceiptWasSaved(): void
     {
         $expected = "Дорогой \"Какой-то чел\"!\n"
             . "Спасибо за заказ: \"Билет на шоу\"\n"
