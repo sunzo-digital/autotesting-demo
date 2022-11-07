@@ -16,9 +16,9 @@ class ReceiptGeneratorTest extends TestCase
         . "С вас было списано: 3000 тг.\n{$break}\n"
         . "Ждем вас снова!\n";
 
-        $factory = new ReceiptGenerator();
+        $generator = new ReceiptGenerator();
 
-        $actual = $factory->make(
+        $actual = $generator->make(
             'Какой-то чел',
             'Билет на шоу',
             3000,
